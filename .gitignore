@@ -1,0 +1,5 @@
+bin/*
+obj/*
+.ionide/*
+wwwroot/Content/*
+wwwroot/Scripts/*

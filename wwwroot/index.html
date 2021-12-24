@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>fsadvent</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Content/fsadvent.css" />
+    <style>
+        /* Don't show the not-yet-loaded templates */
+        [ws-template], [ws-children-template] { display: none; }
+        .flex-container {
+            display: flex;
+        }
+        .shopArea {
+            flex: 1;
+            margin-left: 30px;
+        }
+
+        .basketArea {
+            margin-right: 30px;
+        }
+
+        button {
+            background: darkslateblue;
+            color: white;
+            box-shadow: none;
+            border-radius: 5px;
+        }
+
+        span + button {
+            margin-left: 8px;
+        }
+        
+        .itemToAdd {
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script type="text/javascript" src="Content/fsadvent.head.js"></script>
+</head>
+<body>
+    <div id="main"></div>
+    <div ws-template="Home" class="flex-container">
+        <div class="shopArea" ws-hole="ItemsToShopFor">
+            <div ws-template="Item" class="itemToAdd">
+                <span>${Name}</span>
+                <button ws-attr="CanBeAdded" ws-onclick="AddToBasket">Add to basket</button>
+            </div>
+        </div>
+        <div class="basketArea">
+            <h1>Basket</h1>
+            <div ws-hole="ItemsToCheckout"></div>
+            <div>
+                <button ws-onclick="GoToCheckout">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="Content/fsadvent.min.js"></script>
+</body>
+</html>
