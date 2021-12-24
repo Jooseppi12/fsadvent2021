@@ -26,6 +26,16 @@
             box-shadow: none;
             border-radius: 5px;
         }
+        
+        .checkout-control {
+            margin-top: 30px;
+        }
+
+        button:disabled {
+            background: lightgrey;
+            color: black;
+            cursor: not-allowed;
+        }
 
         span + button {
             margin-left: 8px;
@@ -35,6 +45,13 @@
             margin-bottom: 20px;
         }
 
+        .itemToAdd span {
+            font-weight: bold;
+        }
+        .item {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
     </style>
     <script type="text/javascript" src="Content/fsadvent.head.js"></script>
 </head>
@@ -49,8 +66,9 @@
         </div>
         <div class="basketArea">
             <h1>Basket</h1>
-            <div ws-hole="ItemsToCheckout"></div>
-            <div>
+            <div>Items to be ordered:</div>
+            <div class="items" ws-hole="ItemsToCheckout"></div>
+            <div style="margin-top: 30px;">
                 <button ws-onclick="GoToCheckout">
                     Checkout
                 </button>

@@ -64,12 +64,14 @@ module Client =
             )
             |> fun doc ->
                 div [] [
-                    h1 [] [text "Checkout"]
+                    h1 [] [text "Checkout Page"]
                     doc
-                    button [on.click (fun _ _ -> submitter.Trigger())] [text "Order"]
-                    button [on.click (fun _ _ ->
-                        routerInstance.Set EndPoint.Home
-                    )] [text "Go back"]
+                    div [attr.``class`` "checkout-control"] [
+                        button [on.click (fun _ _ -> submitter.Trigger())] [text "Order"]
+                        button [on.click (fun _ _ ->
+                            routerInstance.Set EndPoint.Home
+                        )] [text "Go back"]
+                    ]
                 ]
         )
 
@@ -80,7 +82,7 @@ module Client =
                 items
                 |> Set.toList
                 |> List.map (fun item ->
-                    div [] [text item]
+                    div [attr.``class`` "item"] [text item]
                 )
                 |> Doc.Concat
             )
