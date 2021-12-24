@@ -371,7 +371,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 (function(Global)
 {
  "use strict";
- var fsadvent,Client,WebSharper,Operators,Obj,UI,Var,SC$1,JavaScript,Pervasives,Doc,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,List,Handler,View,Seq,Unchecked,fsadvent_Templates,fsadvent_Router,EndPoint,Client$1,Templates,Router,Var$1,Forms,Form,JS,Strings,Utils,Submitter,System,Guid,Collections,List$1,T,FSharpSet,AttrModule,Snap,EventTarget,Node,Dictionary,Sitelets,RouterOperators,RouterModule,ConcreteVar,BalancedTree,Fresh,Array,Docs,Object,AttrProxy,CheckedInput,Numeric,Attrs,DomUtility,Enumerator,HashSet,TemplateInitializer,SC$2,WindowOrWorkerGlobalScope,Router$1,Route,List$2,Option,Abbrev,Fresh$1,Result,DocElemNode,CharacterData,Tree,DynamicAttrNode,DictionaryUtil,T$1,Prepare,Slice,KeyCollection,An,Settings,Mailbox,FSharpMap,Map,Concurrency,ErrorMessage,SC$3,Attrs$1,Dyn,Elt,Docs$1,RunState,NodeSet,Anims,SC$4,Pair,Lazy,PathUtil,SC$5,Updates,ValueCollection,SC$6,SC$7,AppendList,HashSetUtil,LazyExtensionsProxy,LazyRecord,MapUtil,Scheduler,Queue,BindVar,SC$8,Easing,AsyncBody,SC$9,CT,HashSet$1,String,CancellationTokenSource,DomNodes,Char,Error,OperationCanceledException,SC$10,IntelliFactory,Runtime$1,console,Math,Date;
+ var fsadvent,Client,WebSharper,Operators,Obj,UI,Var,SC$1,JavaScript,Pervasives,Doc,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,List,Handler,View,Seq,Unchecked,fsadvent_Templates,fsadvent_Router,EndPoint,Client$1,Templates,Router,Var$1,Forms,Form,JS,Strings,Utils,HtmlModule,attr,Submitter,System,Guid,Collections,List$1,T,FSharpSet,AttrModule,Snap,EventTarget,Node,Dictionary,Sitelets,RouterOperators,RouterModule,ConcreteVar,BalancedTree,Fresh,Array,AttrProxy,Docs,Object,CheckedInput,Numeric,Attrs,DomUtility,Enumerator,HashSet,TemplateInitializer,SC$2,WindowOrWorkerGlobalScope,Router$1,Route,List$2,Option,Abbrev,Fresh$1,Result,DocElemNode,CharacterData,Tree,DynamicAttrNode,DictionaryUtil,T$1,Prepare,Slice,KeyCollection,An,Settings,Mailbox,FSharpMap,Map,Concurrency,ErrorMessage,SC$3,Attrs$1,Dyn,Elt,Docs$1,RunState,NodeSet,Anims,SC$4,Pair,Lazy,PathUtil,SC$5,Updates,ValueCollection,SC$6,SC$7,AppendList,HashSetUtil,LazyExtensionsProxy,LazyRecord,MapUtil,Scheduler,Queue,BindVar,SC$8,Easing,AsyncBody,SC$9,CT,HashSet$1,String,CancellationTokenSource,DomNodes,Char,Error,OperationCanceledException,SC$10,IntelliFactory,Runtime$1,console,Math,Date;
  fsadvent=Global.fsadvent=Global.fsadvent||{};
  Client=fsadvent.Client=fsadvent.Client||{};
  WebSharper=Global.WebSharper=Global.WebSharper||{};
@@ -406,6 +406,8 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  JS=JavaScript.JS=JavaScript.JS||{};
  Strings=WebSharper.Strings=WebSharper.Strings||{};
  Utils=WebSharper.Utils=WebSharper.Utils||{};
+ HtmlModule=UI.HtmlModule=UI.HtmlModule||{};
+ attr=HtmlModule.attr=HtmlModule.attr||{};
  Submitter=UI.Submitter=UI.Submitter||{};
  System=Global.System=Global.System||{};
  Guid=System.Guid=System.Guid||{};
@@ -425,9 +427,9 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  BalancedTree=Collections.BalancedTree=Collections.BalancedTree||{};
  Fresh=Forms.Fresh=Forms.Fresh||{};
  Array=UI.Array=UI.Array||{};
+ AttrProxy=UI.AttrProxy=UI.AttrProxy||{};
  Docs=UI.Docs=UI.Docs||{};
  Object=Global.Object;
- AttrProxy=UI.AttrProxy=UI.AttrProxy||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
  Numeric=WebSharper.Numeric=WebSharper.Numeric||{};
  Attrs=UI.Attrs=UI.Attrs||{};
@@ -643,7 +645,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      })],[Doc.TextNode("Remove")])]);
     },List.ofSeq(x)));
    },itemStore.get_View());
-   return Doc.Element("div",[],[Doc.Element("h1",[],[Doc.TextNode("Checkout")]),doc,Doc.Element("button",[AttrModule.Handler("click",function()
+   return Doc.Element("div",[],[Doc.Element("h1",[],[Doc.TextNode("Checkout Page")]),doc,Doc.Element("div",[AttrProxy.Create("class","checkout-control")],[Doc.Element("button",[AttrModule.Handler("click",function()
    {
     return function()
     {
@@ -655,7 +657,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     {
      return Client.routerInstance().Set(EndPoint.Home);
     };
-   })],[Doc.TextNode("Go back")])]);
+   })],[Doc.TextNode("Go back")])])]);
   }
   SC$1.router=fsadvent_Router.r();
   SC$1.routerInstance=Router.Install(EndPoint.Home,Client.router());
@@ -686,7 +688,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     {
      return Doc.Concat(List.map(function(item)
      {
-      return Doc.Element("div",[],[Doc.TextNode(item)]);
+      return Doc.Element("div",[AttrProxy.Create("class","item")],[Doc.TextNode(item)]);
      },List.ofSeq(items)));
     },itemStore.get_View());
    };
@@ -782,10 +784,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    Docs.PerformSyncUpdate(childrenOnly,st,doc.docNode);
   },doc.updates);
  };
- Doc.Element=function(name,attr,children)
+ Doc.Element=function(name,attr$1,children)
  {
   var a,a$1;
-  a=AttrProxy.Concat(attr);
+  a=AttrProxy.Concat(attr$1);
   a$1=Doc.Concat(children);
   return Elt.New(self.document.createElement(name),a,a$1);
  };
@@ -2169,13 +2171,13 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Templates.InlineTemplate=function(el,fillWith)
  {
   var els,$1,$2,$3,holes,updates,attrs,afterRender,fw,e,x;
-  function addAttr(el$1,attr)
+  function addAttr(el$1,attr$1)
   {
-   var attr$1,m,f;
-   attr$1=Attrs.Insert(el$1,attr);
-   updates.push(Attrs.Updates(attr$1));
-   attrs.push([el$1,attr$1]);
-   m=Runtime$1.GetOptional(attr$1.OnAfterRender);
+   var attr$2,m,f;
+   attr$2=Attrs.Insert(el$1,attr$1);
+   updates.push(Attrs.Updates(attr$2));
+   attrs.push([el$1,attr$2]);
+   m=Runtime$1.GetOptional(attr$2.OnAfterRender);
    return m==null?null:(f=m.$0,void afterRender.push(function()
    {
     f(el$1);
@@ -2738,6 +2740,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   return s==null?"":s;
  };
+ attr=HtmlModule.attr=Runtime$1.Class({},Obj,attr);
  Submitter=UI.Submitter=Runtime$1.Class({
   Trigger:function()
   {
@@ -3851,6 +3854,38 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   l=Arrays.length(array);
   return(loop(0))(l);
  };
+ AttrProxy=UI.AttrProxy=Runtime$1.Class({},null,AttrProxy);
+ AttrProxy.Create=function(name,value)
+ {
+  return Attrs.Static(function(el)
+  {
+   el.setAttribute(name,value);
+  });
+ };
+ AttrProxy.Concat=function(xs)
+ {
+  var x;
+  x=Array.ofSeqNonCopying(xs);
+  return Array.TreeReduce(Attrs.EmptyAttr(),AttrProxy.Append,x);
+ };
+ AttrProxy.Append=function(a,b)
+ {
+  return Attrs.AppendTree(a,b);
+ };
+ AttrProxy.Handler=function(event,q)
+ {
+  return AttrProxy.HandlerImpl(event,q);
+ };
+ AttrProxy.HandlerImpl=function(event,q)
+ {
+  return Attrs.Static(function(el)
+  {
+   el.addEventListener(event,function(d)
+   {
+    return(q(el))(d);
+   },false);
+  });
+ };
  Docs.CreateEmbedNode=function()
  {
   return{
@@ -3944,12 +3979,12 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   DomUtility.InsertAt(parent,pos,node);
   return node;
  };
- Docs.CreateElemNode=function(el,attr,children)
+ Docs.CreateElemNode=function(el,attr$1,children)
  {
-  var attr$1;
+  var attr$2;
   Docs.LinkElement(el,children);
-  attr$1=Attrs.Insert(el,attr);
-  return DocElemNode.New(attr$1,children,null,el,Fresh$1.Int(),Runtime$1.GetOptional(attr$1.OnAfterRender));
+  attr$2=Attrs.Insert(el,attr$1);
+  return DocElemNode.New(attr$2,children,null,el,Fresh$1.Int(),Runtime$1.GetOptional(attr$2.OnAfterRender));
  };
  Docs.SyncElemNodesNextFrame=function(childrenOnly,st)
  {
@@ -4189,38 +4224,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   }),DomNodes.Except(DomNodes.DocChildren(el),DomNodes.Children(el.El,Runtime$1.GetOptional(el.Delimiters))));
   ins(el.Children,(m=Runtime$1.GetOptional(el.Delimiters),m!=null&&m.$==1?m.$0[1]:null));
  };
- AttrProxy=UI.AttrProxy=Runtime$1.Class({},null,AttrProxy);
- AttrProxy.Concat=function(xs)
- {
-  var x;
-  x=Array.ofSeqNonCopying(xs);
-  return Array.TreeReduce(Attrs.EmptyAttr(),AttrProxy.Append,x);
- };
- AttrProxy.Append=function(a,b)
- {
-  return Attrs.AppendTree(a,b);
- };
- AttrProxy.Handler=function(event,q)
- {
-  return AttrProxy.HandlerImpl(event,q);
- };
- AttrProxy.Create=function(name,value)
- {
-  return Attrs.Static(function(el)
-  {
-   el.setAttribute(name,value);
-  });
- };
- AttrProxy.HandlerImpl=function(event,q)
- {
-  return Attrs.Static(function(el)
-  {
-   el.addEventListener(event,function(d)
-   {
-    return(q(el))(d);
-   },false);
-  });
- };
  CheckedInput=UI.CheckedInput=Runtime$1.Class({
   get_Input:function()
   {
@@ -4238,11 +4241,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    $0:new DynamicAttrNode.New(view,set)
   });
  };
- Attrs.Static=function(attr)
+ Attrs.Static=function(attr$1)
  {
   return new AttrProxy({
    $:3,
-   $0:attr
+   $0:attr$1
   });
  };
  Attrs.Insert=function(elem,tree)
@@ -4301,11 +4304,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$8.$cctor();
   return SC$8.EmptyAttr;
  };
- Attrs.HasExitAnim=function(attr)
+ Attrs.HasExitAnim=function(attr$1)
  {
   var flag;
   flag=2;
-  return(attr.DynFlags&flag)===flag;
+  return(attr$1.DynFlags&flag)===flag;
  };
  Attrs.GetExitAnim=function(dyn)
  {
@@ -4314,11 +4317,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    return $1.NGetExitAnim($2);
   });
  };
- Attrs.HasEnterAnim=function(attr)
+ Attrs.HasEnterAnim=function(attr$1)
  {
   var flag;
   flag=1;
-  return(attr.DynFlags&flag)===flag;
+  return(attr$1.DynFlags&flag)===flag;
  };
  Attrs.GetEnterAnim=function(dyn)
  {
@@ -4327,11 +4330,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    return $1.NGetEnterAnim($2);
   });
  };
- Attrs.HasChangeAnim=function(attr)
+ Attrs.HasChangeAnim=function(attr$1)
  {
   var flag;
   flag=4;
-  return(attr.DynFlags&flag)===flag;
+  return(attr$1.DynFlags&flag)===flag;
  };
  Attrs.GetChangeAnim=function(dyn)
  {
@@ -5718,10 +5721,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    return Attrs.Updates(f(x$1));
   },tree.Attrs),Array.TreeReduce(View.Const(),View.Map2Unit,x)),rvUpdates.v),Arrays.get(tree.Els,0),rvUpdates);
  };
- Elt.New=function(el,attr,children)
+ Elt.New=function(el,attr$1,children)
  {
   var node,rvUpdates;
-  node=Docs.CreateElemNode(el,attr,children.docNode);
+  node=Docs.CreateElemNode(el,attr$1,children.docNode);
   rvUpdates=Updates.Create(children.updates);
   return new Elt.New$1({
    $:1,
