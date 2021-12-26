@@ -16,7 +16,7 @@
             margin-left: 30px;
         }
 
-        .basketArea {
+        .cartArea {
             margin-right: 30px;
         }
 
@@ -61,11 +61,11 @@
         <div class="shopArea" ws-hole="ItemsToShopFor">
             <div ws-template="Item" class="itemToAdd">
                 <span>${Name}</span>
-                <button ws-attr="CanBeAdded" ws-onclick="AddToBasket">Add to basket</button>
+                <button ws-attr="CanBeAdded" ws-onclick="AddToCart">Add to cart</button>
             </div>
         </div>
-        <div class="basketArea">
-            <h1>Basket</h1>
+        <div class="cartArea">
+            <h1>Cart</h1>
             <div>Items to be ordered:</div>
             <div class="items" ws-hole="ItemsToCheckout"></div>
             <div style="margin-top: 30px;">

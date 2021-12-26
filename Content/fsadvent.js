@@ -530,14 +530,14 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   return(b=(t=(_this=(I=List.map(function(item)
   {
    var b$1,C,view,_this$2,t$1,_this$3,p$1,i$1;
-   return(b$1=(C=(view=View.Const("disabled"),AttrModule.DynamicPred("disabled",View.Map(function(basket)
+   return(b$1=(C=(view=View.Const("disabled"),AttrModule.DynamicPred("disabled",View.Map(function(cart)
    {
-    return Seq.contains(item,basket);
+    return Seq.contains(item,cart);
    },Client.itemsToOrder().get_View()),view)),(_this$2=(t$1=(_this$3=new ProviderBuilder.New$1(),(_this$3.h.push({
     $:1,
     $0:"name",
     $1:item
-   }),_this$3)),(t$1.h.push(Handler.EventQ2(t$1.k,"addtobasket",function()
+   }),_this$3)),(t$1.h.push(Handler.EventQ2(t$1.k,"addtocart",function()
    {
     return t$1.i;
    },function()
@@ -558,7 +558,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   }),_this$1))),(_this.h.push({
    $:0,
    $0:"itemstocheckout",
-   $1:Client.renderedBasket()
+   $1:Client.renderedcart()
   }),_this)),(t.h.push(Handler.EventQ2(t.k,"gotocheckout",function()
   {
    return t.i;
@@ -572,10 +572,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.checkoutForm;
  };
- Client.renderedBasket=function()
+ Client.renderedcart=function()
  {
   SC$1.$cctor();
-  return SC$1.renderedBasket;
+  return SC$1.renderedcart;
  };
  Client.items=function()
  {
@@ -592,10 +592,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.router;
  };
- Client.basketForm=function()
+ Client.cartForm=function()
  {
   SC$1.$cctor();
-  return SC$1.basketForm;
+  return SC$1.cartForm;
  };
  Operators.FailWith=function(msg)
  {
@@ -663,7 +663,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.routerInstance=Router.Install(EndPoint.Home,Client.router());
   SC$1.itemsToOrder=Var$1.Create$1(new FSharpSet.New$1(null));
   SC$1.items=List.ofArray(["apple","orange","banana","grape","pear"]);
-  SC$1.basketForm=Form.WithSubmit(Form.YieldVar(Client.itemsToOrder()));
+  SC$1.cartForm=Form.WithSubmit(Form.YieldVar(Client.itemsToOrder()));
   SC$1.checkoutForm=Form.Render(function($1)
   {
    return function($2)
@@ -679,8 +679,8 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      return $1("You have ordered: "+Utils.toSafe($2));
     };
    }(Global.id))(Strings.concat(",",items)));
-  },Client.basketForm()));
-  SC$1.renderedBasket=Client.basketForm().render(function(itemStore)
+  },Client.cartForm()));
+  SC$1.renderedcart=Client.cartForm().render(function(itemStore)
   {
    return function()
    {
