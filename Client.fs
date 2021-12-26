@@ -33,12 +33,12 @@ module Client =
             "pear"
         ]
 
-    let basketForm =
+    let cartForm =
         Form.YieldVar itemsToOrder
         |> Form.WithSubmit
     
     let checkoutForm =
-        basketForm
+        cartForm
         |> Form.Run (fun items ->
             JS.Alert
                 <| sprintf "You have ordered: %s" (items |> String.concat ",")
@@ -75,8 +75,8 @@ module Client =
                 ]
         )
 
-    let renderedBasket =
-        basketForm.Render(fun itemStore _ ->
+    let renderedcart =
+        cartForm.Render(fun itemStore _ ->
             itemStore.View
             |> Doc.BindView(fun items ->
                 items
@@ -95,18 +95,18 @@ module Client =
                 |> List.map (fun item ->
                     IndexTemplate.Item()
                         .Name(item)
-                        .AddToBasket(fun _ ->
+                        .AddToCart(fun _ ->
                             itemsToOrder.Update(fun items -> Set.add item items)
                         )
                         .CanBeAdded(
                             attr.disabledDynPred (View.Const "disabled")
-                                (itemsToOrder.View.Map(fun basket -> Seq.contains item basket ))
+                                (itemsToOrder.View.Map(fun cart -> Seq.contains item cart ))
                         )
                         .Doc()
                 )
             )
             .ItemsToCheckout(
-                renderedBasket
+                renderedcart
             )
             .GoToCheckout(fun _ -> 
                 routerInstance.Set EndPoint.Checkout
